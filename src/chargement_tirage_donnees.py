@@ -144,7 +144,7 @@ def chargement_tirage(con):
         SELECT table_ul_sample_step0.siren, 
               changementEtatAdministratifUniteLegale, 
               changementActivitePrincipaleUniteLegale, 
-              changementCategorieJuridiqueUniteLegale, 
+              changementCategorieJuridiqueUniteLegale , 
               IF(dateFin IS NULL,DATE_DIFF('day',dateDebut,TODAY()),DATE_DIFF('day',dateDebut,dateFin)) AS duree_periode,
         FROM READ_PARQUET('https://www.data.gouv.fr/api/1/datasets/r/1b9290ed-d0bc-461f-ba31-0250a99cc140') AS table_ul_complete 
         RIGHT JOIN table_ul_sample_step0 ON table_ul_complete.siren=table_ul_sample_step0.siren
